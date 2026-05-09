@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 
 const LIFE_VALUES = [
-  { id: "health",     emoji: "💪", label: "健康",   desc: "身體狀態、精力、睡眠" },
-  { id: "family",     emoji: "🏡", label: "家人",   desc: "與父母、子女和手足的關係" },
-  { id: "romance",    emoji: "💕", label: "親密關係", desc: "伴侶、被愛與付出" },
-  { id: "friendship", emoji: "🤝", label: "友誼",   desc: "深度友誼、社交連結" },
-  { id: "finance",    emoji: "💰", label: "財務",   desc: "安全感、不被錢綁住的自由" },
-  { id: "growth",     emoji: "🌱", label: "成長",   desc: "持續學習、成為更好的自己" },
-  { id: "meaning",    emoji: "🕯️", label: "意義",   desc: "感覺存在有價值、有貢獻" },
-  { id: "autonomy",   emoji: "🗝️", label: "自主",   desc: "時間與生活方式由自己決定" },
-  { id: "experience", emoji: "✈️", label: "體驗",   desc: "旅行、冒險、嘗試新事物" },
-  { id: "peace",      emoji: "🌙", label: "內在平靜", desc: "與自己和解、不被焦慮主導" },
-  { id: "impact",     emoji: "🌏", label: "社會影響", desc: "改變社會、國家與世界" },
-  { id: "career",     emoji: "💼", label: "職涯",   desc: "工作有方向、在乎自己做的事" },
+  { id: "impact",     emoji: "🌏", label: "社會影響", desc: "改變社會、國家與世界" },        // 12點
+  { id: "growth",     emoji: "🌱", label: "成長",   desc: "持續學習、成為更好的自己" },      // 1點
+  { id: "friendship", emoji: "🤝", label: "友誼",   desc: "深度友誼、社交連結" },            // 2點
+  { id: "family",     emoji: "🏡", label: "家人",   desc: "與父母、子女和手足的關係" },      // 3點
+  { id: "romance",    emoji: "💕", label: "親密關係", desc: "伴侶、被愛與付出" },            // 4點
+  { id: "peace",      emoji: "🌙", label: "內在平靜", desc: "與自己和解、不被焦慮主導" },    // 5點
+  { id: "meaning",    emoji: "🕯️", label: "意義",   desc: "感覺存在有價值、有貢獻" },       // 6點
+  { id: "autonomy",   emoji: "🗝️", label: "自主",   desc: "時間與生活方式由自己決定" },     // 7點
+  { id: "experience", emoji: "✈️", label: "體驗",   desc: "旅行、冒險、嘗試新事物" },       // 8點
+  { id: "health",     emoji: "💪", label: "健康",   desc: "身體狀態、精力、睡眠" },          // 9點
+  { id: "finance",    emoji: "💰", label: "財務",   desc: "安全感、不被錢綁住的自由" },      // 10點
+  { id: "career",     emoji: "💼", label: "職涯",   desc: "工作有方向、在乎自己做的事" },    // 11點
 ];
 
 const CAREER_LABELS = {
