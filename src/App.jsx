@@ -373,6 +373,7 @@ export default function CareerValuesQuiz() {
       computeRanking(scores).slice(0, 5).forEach((v) => (init[v.id] = 3));
       setSatisfaction(init);
     }
+    window.scrollTo(0, 0);
   }, [phase]);
 
   const handleChoose = (side) => {
