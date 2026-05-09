@@ -662,7 +662,7 @@ export default function LifeQuiz({ onBack }) {
 
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               {onBack && <button className="btn-ghost" onClick={onBack}>← 職涯測驗</button>}
-              <button className="btn-ghost" onClick={() => setPhase("intro")}>回首頁</button>
+              <button className="btn-ghost" onClick={() => setPhase("satisfaction")}>← 重新評估現況</button>
               <button className="btn-primary" onClick={() => setPhase("quiz")}>再測一次</button>
             </div>
           </div>
