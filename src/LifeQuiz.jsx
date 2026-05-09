@@ -245,7 +245,6 @@ const PRICE_OPTIONS = [
 function LifeWaitlistModal({ onClose, top3 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [price, setPrice] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -259,7 +258,7 @@ function LifeWaitlistModal({ onClose, top3 }) {
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST", mode: "no-cors",
-        body: JSON.stringify({ name, email, message, quiz_type: "life", top3: top3.join(","), price_willingness: price }),
+        body: JSON.stringify({ name, email, quiz_type: "life", top3: top3.join(","), price_willingness: price }),
       });
     } catch (_) {}
     setLoading(false); setSubmitted(true);
@@ -290,7 +289,6 @@ function LifeWaitlistModal({ onClose, top3 }) {
               <div style={{ fontSize: 36, marginBottom: 12 }}>🗺️</div>
               <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: "#f0ead6", marginBottom: 8 }}>深入了解你的人生地圖</h3>
               <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.8 }}>
-                完整衝突分析與 AI 個人化建議正在開發中。<br />
                 <span style={{ color: "#c9a84c" }}>留下 email，上線時第一個通知你，早鳥享優惠價。</span>
               </p>
             </div>
@@ -321,12 +319,7 @@ function LifeWaitlistModal({ onClose, top3 }) {
                   ))}
                 </div>
               </div>
-              <div>
-                <label style={labelStyle}>你最想了解什麼？（選填）</label>
-                <textarea placeholder="例如：我覺得家人和工作之間一直有衝突⋯" value={message}
-                  onChange={(e) => setMessage(e.target.value)} rows={3}
-                  style={{ ...inputStyle, border: "1px solid #3a3730", resize: "none", lineHeight: 1.7 }} />
-              </div>
+
             </div>
             <button onClick={handleSubmit} disabled={loading} style={{
               width: "100%", background: loading ? "#5a5040" : "linear-gradient(135deg,#c9a84c,#e8c96a)",
@@ -334,7 +327,7 @@ function LifeWaitlistModal({ onClose, top3 }) {
               fontSize: 15, fontWeight: 700, cursor: loading ? "not-allowed" : "pointer",
               fontFamily: "'Noto Serif TC', serif", letterSpacing: "0.05em", transition: "background 0.2s, color 0.2s",
             }}>
-              {loading ? "送出中⋯" : "加入候補名單"}
+              {loading ? "送出中⋯" : "通知我上線"}
             </button>
             <p style={{ textAlign: "center", fontSize: 11, color: "#7a7870", marginTop: 12 }}>不會發送垃圾郵件，只在功能上線時通知你一次</p>
           </div>
