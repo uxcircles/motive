@@ -659,9 +659,8 @@ export default function LifeQuiz({ onBack }) {
                     fontFamily: "'Noto Serif TC',serif", letterSpacing: "0.05em",
                   }}
                 >
-                  解鎖完整分析 NT$99
+                  解鎖完整分析
                 </button>
-                <p style={{ fontSize: 11, color: "#7a7870", marginTop: 12 }}>功能即將推出・早鳥優惠</p>
               </div>
             </div>
 
