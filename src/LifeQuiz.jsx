@@ -367,9 +367,9 @@ export default function LifeQuiz({ onBack }) {
               <button className="btn-primary" onClick={() => setPhase("quiz")}>開始測驗</button>
               {onBack && (
                 <button onClick={onBack}
-                  onMouseEnter={e => e.currentTarget.style.color = "#b8b0a0"}
-                  onMouseLeave={e => e.currentTarget.style.color = "#9a9080"}
-                  style={{ background: "none", border: "none", color: "#9a9080", fontSize: 13, cursor: "pointer", fontFamily: "'Noto Serif TC',serif", marginTop: 12, transition: "color 0.2s" }}>← 返回職涯測驗</button>
+                  onMouseEnter={e => { e.currentTarget.style.color = "#b8b0a0"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "#9a9080"; e.currentTarget.style.transform = "translateY(0)"; }}
+                  style={{ background: "none", border: "none", color: "#9a9080", fontSize: 13, cursor: "pointer", fontFamily: "'Noto Serif TC',serif", marginTop: 12, transition: "color 0.2s,transform 0.1s" }}>← 返回職涯測驗</button>
               )}
             </div>
           </div>
