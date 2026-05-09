@@ -99,17 +99,10 @@ function LanguageSwitcher() {
     padding: "4px 8px", transition: "color 0.2s",
   });
   return (
-    <div style={{
-      position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
-      textAlign: "center", padding: "10px 0 12px",
-      background: "linear-gradient(to top, #0f0e0c 60%, transparent)",
-      pointerEvents: "none",
-    }}>
-      <div style={{ pointerEvents: "auto", display: "inline-flex", alignItems: "center" }}>
-        <button style={btnStyle(lang === "zh")} onClick={() => setLang("zh")} disabled={lang === "zh"}>繁中</button>
-        <span style={{ color: "#2a2720", fontSize: 10 }}>·</span>
-        <button style={btnStyle(lang === "en")} onClick={() => setLang("en")} disabled={lang === "en"}>English</button>
-      </div>
+    <div style={{ textAlign: "center", marginTop: 80, paddingBottom: 40 }}>
+      <button style={btnStyle(lang === "zh")} onClick={() => setLang("zh")} disabled={lang === "zh"}>繁中</button>
+      <span style={{ color: "#2a2720", fontSize: 10 }}>·</span>
+      <button style={btnStyle(lang === "en")} onClick={() => setLang("en")} disabled={lang === "en"}>English</button>
     </div>
   );
 }
