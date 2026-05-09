@@ -156,7 +156,7 @@ function ConflictAnalysis({ lifeRanked }) {
   const careerToLife = {
     money: "finance", learning: "growth", autonomy: "autonomy",
     impact: "impact", growth: "growth", people: "friendship",
-    balance: "peace", security: "finance", prestige: "career",
+    balance: "autonomy", security: "finance", prestige: "career",
     creativity: "creativity", leadership: "impact", expertise: "growth",
     challenge: "experience", culture: "friendship",
   };
