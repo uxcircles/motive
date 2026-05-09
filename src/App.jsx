@@ -171,7 +171,7 @@ function WaitlistModal({ onClose }) {
   };
 
   const inputStyle = {
-    width: "100%", background: "#141210", borderRadius: 10,
+    width: "100%", background: "#0f0e0c", borderRadius: 10,
     padding: "12px 14px", color: "#f0ead6", fontSize: 14,
     fontFamily: "'Noto Serif TC', serif", outline: "none",
   };
@@ -336,7 +336,7 @@ function SatisfactionSlider({ value, onChange, color }) {
         {[1, 2, 3, 4, 5].map((n) => (
           <span key={n} style={{
             fontSize: 10,
-            color: value === n ? color : "#7a7870",
+            color: value === n ? color : "#9a9080",
             fontWeight: value === n ? 700 : 400,
             transition: "color 0.2s",
           }}>
@@ -459,9 +459,9 @@ export default function CareerValuesQuiz() {
           <div>
             <StepDots phase="quiz" />
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 28, gap: 12 }}>
-              <span style={{ color: "#7a7870", fontSize: 12, flexShrink: 0 }}>{current + 1} / {pairs.length}</span>
+              <span style={{ color: "#9a9080", fontSize: 12, flexShrink: 0 }}>{current + 1} / {pairs.length}</span>
               <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
-              <span style={{ color: "#7a7870", fontSize: 12, flexShrink: 0 }}>{progress}%</span>
+              <span style={{ color: "#9a9080", fontSize: 12, flexShrink: 0 }}>{progress}%</span>
             </div>
             <p style={{ textAlign: "center", color: "#9a9080", fontSize: 14, marginBottom: 28, letterSpacing: "0.08em" }}>
               在工作中，你更重視哪一個？
@@ -504,7 +504,7 @@ export default function CareerValuesQuiz() {
                     <span style={{ fontSize: 22 }}>{v.emoji}</span>
                     <div>
                       <div style={{ fontSize: 15, color: "#f0ead6", fontWeight: 600 }}>{v.label}</div>
-                      <div style={{ fontSize: 12, color: "#7a7870" }}>{v.desc}</div>
+                      <div style={{ fontSize: 12, color: "#9a9080" }}>{v.desc}</div>
                     </div>
                     <div style={{ marginLeft: "auto", fontSize: 20 }}>
                       {["😞", "😕", "😐", "🙂", "😊"][(satisfaction[v.id] || 3) - 1]}
@@ -641,7 +641,7 @@ export default function CareerValuesQuiz() {
 
             {/* Full ranking */}
             <div className="divider" />
-            <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#7a7870", textTransform: "uppercase", marginBottom: 10 }}>完整排名</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#9a9080", textTransform: "uppercase", marginBottom: 10 }}>完整排名</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 36 }}>
               {ranked.map((v, i) => {
                 const pct = Math.round((v.score / (ranked[0].score || 1)) * 100);

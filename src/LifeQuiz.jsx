@@ -174,7 +174,7 @@ function ConflictAnalysis({ lifeRanked }) {
       </div>
 
       <div style={{ marginBottom: 14 }}>
-        <div style={{ fontSize: 12, color: "#7a7870", marginBottom: 6 }}>職涯在你人生中的排名</div>
+        <div style={{ fontSize: 12, color: "#9a9080", marginBottom: 6 }}>職涯在你人生中的排名</div>
         <div style={{ fontSize: 15, fontWeight: 600, color: careerRankInLife <= 3 ? "#c9a84c" : careerRankInLife <= 7 ? "#f0ead6" : "#9a9080" }}>
           第 {careerRankInLife} 位
         </div>
@@ -187,7 +187,7 @@ function ConflictAnalysis({ lifeRanked }) {
 
       <div style={{ height: 1, background: "#2a2720", margin: "14px 0" }} />
 
-      <div style={{ fontSize: 12, color: "#7a7870", marginBottom: 8 }}>你在職涯中最追求的</div>
+      <div style={{ fontSize: 12, color: "#9a9080", marginBottom: 8 }}>你在職涯中最追求的</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
         {careerTop3.map(v => {
           const info = CAREER_LABELS[v] || { label: v, emoji: "•" };
@@ -224,7 +224,7 @@ function SatisfactionSlider({ value, onChange, color }) {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         {[1, 2, 3, 4, 5].map((n) => (
           <span key={n} style={{
-            fontSize: 10, color: value === n ? color : "#7a7870",
+            fontSize: 10, color: value === n ? color : "#9a9080",
             fontWeight: value === n ? 700 : 400, transition: "color 0.2s",
           }}>{labels[n - 1]}</span>
         ))}
@@ -257,7 +257,7 @@ function LifeWaitlistModal({ onClose, top3 }) {
   };
 
   const inputStyle = {
-    width: "100%", background: "#141210", borderRadius: 10,
+    width: "100%", background: "#0f0e0c", borderRadius: 10,
     padding: "12px 14px", color: "#f0ead6", fontSize: 14,
     fontFamily: "'Noto Serif TC', serif", outline: "none",
   };
@@ -479,9 +479,9 @@ export default function LifeQuiz({ onBack }) {
           <div>
             <StepDots phase="quiz" />
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 28, gap: 12 }}>
-              <span style={{ color: "#7a7870", fontSize: 12, flexShrink: 0 }}>{current + 1} / {pairs.length}</span>
+              <span style={{ color: "#9a9080", fontSize: 12, flexShrink: 0 }}>{current + 1} / {pairs.length}</span>
               <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
-              <span style={{ color: "#7a7870", fontSize: 12, flexShrink: 0 }}>{progress}%</span>
+              <span style={{ color: "#9a9080", fontSize: 12, flexShrink: 0 }}>{progress}%</span>
             </div>
             <p style={{ textAlign: "center", color: "#9a9080", fontSize: 14, marginBottom: 28, letterSpacing: "0.08em" }}>
               在人生中，你更重視哪一個？
@@ -524,7 +524,7 @@ export default function LifeQuiz({ onBack }) {
                     <span style={{ fontSize: 22 }}>{v.emoji}</span>
                     <div>
                       <div style={{ fontSize: 15, color: "#f0ead6", fontWeight: 600 }}>{v.label}</div>
-                      <div style={{ fontSize: 12, color: "#7a7870" }}>{v.desc}</div>
+                      <div style={{ fontSize: 12, color: "#9a9080" }}>{v.desc}</div>
                     </div>
                     <div style={{ marginLeft: "auto", fontSize: 20 }}>
                       {["😞", "😕", "😐", "🙂", "😊"][(satisfaction[v.id] || 3) - 1]}
@@ -644,7 +644,7 @@ export default function LifeQuiz({ onBack }) {
 
             {/* Full ranking */}
             <div className="divider" />
-            <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#7a7870", textTransform: "uppercase", marginBottom: 10 }}>完整排名</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#9a9080", textTransform: "uppercase", marginBottom: 10 }}>完整排名</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 36 }}>
               {ranked.map((v, i) => {
                 const pct = Math.round((v.score / (ranked[0].score || 1)) * 100);
