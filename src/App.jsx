@@ -660,8 +660,7 @@ export default function CareerValuesQuiz() {
             </div>
 
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <button className="btn-ghost" onClick={() => setPhase("intro")}>回首頁</button>
-              <button className="btn-ghost" onClick={() => setPhase("satisfaction")}>← 重新評估現況</button>
+              <button className="btn-ghost" onClick={() => setPhase("satisfaction")}>重新評估現況</button>
               <button className="btn-primary" onClick={() => setPhase("quiz")}>再測一次</button>
             </div>
           </div>
