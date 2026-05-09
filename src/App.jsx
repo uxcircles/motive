@@ -369,6 +369,7 @@ export default function CareerValuesQuiz() {
       setScores(init);
       setCurrent(0);
       setCardAnim({ left: "", right: "" });
+      setAnimating(false);
     }
     if (phase === "satisfaction") {
       const init = {};

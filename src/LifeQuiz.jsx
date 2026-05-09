@@ -382,6 +382,7 @@ export default function LifeQuiz({ onBack }) {
       setScores(init);
       setCurrent(0);
       setCardAnim({ left: "", right: "" });
+      setAnimating(false);
     }
     if (phase === "satisfaction") {
       const init = {};
