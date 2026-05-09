@@ -617,37 +617,21 @@ export default function CareerValuesQuiz() {
                 <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: 22, color: "#f0ead6", marginBottom: 12, lineHeight: 1.4 }}>
                   職涯只是人生的一部分
                 </div>
-                <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.9, maxWidth: 340, margin: "0 auto 24px" }}>
-                  你知道自己在工作中重視什麼了。<br />
-                  但這跟你想要的人生一致嗎？<br />
-                  <span style={{ color: "#c9a84c" }}>人生設計測驗</span>幫你建立完整的全局觀——找出職涯、關係、健康、意義之間的真正優先順序。
+                <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.9, maxWidth: 300, margin: "0 auto 24px" }}>
+                  職涯只是人生的一塊。<br />下一步，看見完整的全局。
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                  <a
-                    href="#life"
-                    style={{
-                      background: "linear-gradient(135deg,#c9a84c,#e8c96a)", color: "#0f0e0c",
-                      border: "none", padding: "14px 32px", borderRadius: 40,
-                      fontSize: 15, fontWeight: 700, cursor: "pointer",
-                      fontFamily: "'Noto Serif TC',serif", letterSpacing: "0.05em",
-                      textDecoration: "none", display: "inline-block",
-                    }}
-                  >
-                    開始人生設計測驗（免費）
-                  </a>
-                  <button
-                    onClick={() => setShowWaitlist(true)}
-                    style={{
-                      background: "transparent", color: "#9a9080",
-                      border: "1px solid #3a3730", padding: "10px 24px", borderRadius: 40,
-                      fontSize: 13, cursor: "pointer",
-                      fontFamily: "'Noto Serif TC',serif",
-                    }}
-                  >
-                    訂閱 AI 個人化分析通知 NT$99
-                  </button>
-                </div>
-                <p style={{ fontSize: 11, color: "#7a7870" }}>AI 分析功能即將推出・留下 email 優先體驗・早鳥優惠</p>
+                <a
+                  href="#life"
+                  style={{
+                    background: "linear-gradient(135deg,#c9a84c,#e8c96a)", color: "#0f0e0c",
+                    border: "none", padding: "14px 32px", borderRadius: 40,
+                    fontSize: 15, fontWeight: 700, cursor: "pointer",
+                    fontFamily: "'Noto Serif TC',serif", letterSpacing: "0.05em",
+                    textDecoration: "none", display: "inline-block",
+                  }}
+                >
+                  開始人生設計測驗
+                </a>
               </div>
             </div>
 
