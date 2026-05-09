@@ -233,6 +233,101 @@ function SatisfactionSlider({ value, onChange, color }) {
   );
 }
 
+// ── Life Waitlist Modal ──
+function LifeWaitlistModal({ onClose, top3 }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbySZQS4qFXzj7zBLENpvjDy2dZWOZEJTGkxHsOjKSMGWKqdzspTyloC1pu9QivriFJXbg/exec";
+
+  const handleSubmit = async () => {
+    if (!email || !email.includes("@")) { setError("請輸入有效的 Email"); return; }
+    setError(""); setLoading(true);
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST", mode: "no-cors",
+        body: JSON.stringify({ name, email, message, quiz_type: "life", top3: top3.join(",") }),
+      });
+    } catch (_) {}
+    setLoading(false); setSubmitted(true);
+  };
+
+  const inputStyle = {
+    width: "100%", background: "#141210", borderRadius: 10,
+    padding: "12px 14px", color: "#f0ead6", fontSize: 14,
+    fontFamily: "'Noto Serif TC', serif", outline: "none",
+  };
+  const labelStyle = { fontSize: 12, color: "#9a9080", display: "block", marginBottom: 6, letterSpacing: "0.05em" };
+
+  return (
+    <div onClick={(e) => e.target === e.currentTarget && onClose()} style={{
+      position: "fixed", inset: 0, zIndex: 100, background: "rgba(0,0,0,0.75)",
+      backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
+    }}>
+      <div style={{
+        background: "#1c1a16", border: "1px solid #3a3730", borderRadius: 24,
+        padding: "36px 32px", width: "100%", maxWidth: 460, position: "relative",
+        boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
+      }}>
+        <button onClick={onClose} style={{ position: "absolute", top: 16, right: 18, background: "transparent", border: "none", color: "#7a7870", fontSize: 20, cursor: "pointer" }}>✕</button>
+
+        {!submitted ? (
+          <div>
+            <div style={{ textAlign: "center", marginBottom: 28 }}>
+              <div style={{ fontSize: 36, marginBottom: 12 }}>🗺️</div>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: "#f0ead6", marginBottom: 8 }}>深入了解你的人生地圖</h3>
+              <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.8 }}>
+                完整衝突分析與 AI 個人化建議正在開發中。<br />
+                <span style={{ color: "#c9a84c" }}>留下 email，上線時第一個通知你，早鳥享優惠價。</span>
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
+              <div>
+                <label style={labelStyle}>姓名（選填）</label>
+                <input type="text" placeholder="你的名字" value={name} onChange={(e) => setName(e.target.value)}
+                  style={{ ...inputStyle, border: "1px solid #3a3730" }} />
+              </div>
+              <div>
+                <label style={labelStyle}>Email <span style={{ color: "#c9a84c" }}>*</span></label>
+                <input type="email" placeholder="your@email.com" value={email}
+                  onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                  style={{ ...inputStyle, border: `1px solid ${error ? "#c0504d" : "#3a3730"}` }} />
+                {error && <p style={{ fontSize: 12, color: "#c0504d", marginTop: 5 }}>{error}</p>}
+              </div>
+              <div>
+                <label style={labelStyle}>你最想了解什麼？（選填）</label>
+                <textarea placeholder="例如：我覺得家人和工作之間一直有衝突⋯" value={message}
+                  onChange={(e) => setMessage(e.target.value)} rows={3}
+                  style={{ ...inputStyle, border: "1px solid #3a3730", resize: "none", lineHeight: 1.7 }} />
+              </div>
+            </div>
+            <button onClick={handleSubmit} disabled={loading} style={{
+              width: "100%", background: loading ? "#5a5040" : "linear-gradient(135deg,#c9a84c,#e8c96a)",
+              color: loading ? "#9a9080" : "#0f0e0c", border: "none", padding: "14px", borderRadius: 40,
+              fontSize: 15, fontWeight: 700, cursor: loading ? "not-allowed" : "pointer",
+              fontFamily: "'Noto Serif TC', serif", letterSpacing: "0.05em", transition: "background 0.2s, color 0.2s",
+            }}>
+              {loading ? "送出中⋯" : "加入候補名單"}
+            </button>
+            <p style={{ textAlign: "center", fontSize: 11, color: "#7a7870", marginTop: 12 }}>不會發送垃圾郵件，只在功能上線時通知你一次</p>
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", padding: "20px 0" }}>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>🎉</div>
+            <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: "#f0ead6", marginBottom: 12 }}>已收到！</h3>
+            <p style={{ color: "#9a9080", fontSize: 14, lineHeight: 1.8 }}>功能上線時會第一個通知你。<br />感謝你探索自己的人生地圖。</p>
+            <button onClick={onClose} className="btn-primary" style={{ marginTop: 24 }}>關閉</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Step Dots ──
 function StepDots({ phase }) {
   const steps = ["intro", "quiz", "satisfaction", "result"];
@@ -271,6 +366,7 @@ function StepDots({ phase }) {
 // ── Main ──
 export default function LifeQuiz({ onBack }) {
   const [phase, setPhase] = useState("intro");
+  const [showWaitlist, setShowWaitlist] = useState(false);
   const [pairs, setPairs] = useState([]);
   const [current, setCurrent] = useState(0);
   const [scores, setScores] = useState({});
@@ -529,7 +625,7 @@ export default function LifeQuiz({ onBack }) {
                   完整衝突分析、AI 個人化建議<br />以及可下載的人生設計報告
                 </p>
                 <button
-                  onClick={() => alert("功能即將推出，敬請期待！")}
+                  onClick={() => setShowWaitlist(true)}
                   style={{
                     background: "linear-gradient(135deg,#c9a84c,#e8c96a)", color: "#0f0e0c",
                     border: "none", padding: "14px 32px", borderRadius: 40,
@@ -571,6 +667,12 @@ export default function LifeQuiz({ onBack }) {
           </div>
         )}
       </div>
+      {showWaitlist && (
+        <LifeWaitlistModal
+          onClose={() => setShowWaitlist(false)}
+          top3={ranked.slice(0, 3).map(v => v.label)}
+        />
+      )}
     </div>
   );
 }
