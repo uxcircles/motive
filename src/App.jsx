@@ -350,7 +350,9 @@ function SatisfactionSlider({ value, onChange, color }) {
 
 // ── Main App ──
 export default function CareerValuesQuiz() {
-  const [phase, setPhase] = useState("intro");
+  const returnPhase = localStorage.getItem("motive_career_return");
+  if (returnPhase) localStorage.removeItem("motive_career_return");
+  const [phase, setPhase] = useState(returnPhase || "intro");
   const [pairs, setPairs] = useState([]);
   const [current, setCurrent] = useState(0);
   const [scores, setScores] = useState({});
@@ -622,6 +624,7 @@ export default function CareerValuesQuiz() {
                 </p>
                 <a
                   href="#life"
+                  onClick={() => localStorage.setItem("motive_career_return", "result")}
                   style={{
                     background: "linear-gradient(135deg,#c9a84c,#e8c96a)", color: "#0f0e0c",
                     border: "none", padding: "14px 32px", borderRadius: 40,
@@ -657,6 +660,7 @@ export default function CareerValuesQuiz() {
 
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button className="btn-ghost" onClick={() => setPhase("intro")}>回首頁</button>
+              <button className="btn-ghost" onClick={() => setPhase("satisfaction")}>← 重新評估現況</button>
               <button className="btn-primary" onClick={() => setPhase("quiz")}>再測一次</button>
             </div>
           </div>
