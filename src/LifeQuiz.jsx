@@ -363,11 +363,14 @@ export default function LifeQuiz({ onBack }) {
             <p style={{ color: "#7a7870", fontSize: 13, marginBottom: 48 }}>
               36 題比較・現況評估・人生雷達圖・約 5 分鐘
             </p>
-            <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
-              {onBack && (
-                <button className="btn-ghost" onClick={onBack}>← 職涯測驗</button>
-              )}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
               <button className="btn-primary" onClick={() => setPhase("quiz")}>開始測驗</button>
+              {onBack && (
+                <button onClick={onBack}
+                  onMouseEnter={e => e.currentTarget.style.color = "#b8b0a0"}
+                  onMouseLeave={e => e.currentTarget.style.color = "#9a9080"}
+                  style={{ background: "none", border: "none", color: "#9a9080", fontSize: 13, cursor: "pointer", fontFamily: "'Noto Serif TC',serif", marginTop: 12, transition: "color 0.2s" }}>← 返回職涯測驗</button>
+              )}
             </div>
           </div>
         )}
