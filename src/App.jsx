@@ -210,8 +210,8 @@ function WaitlistModal({ onClose }) {
                 個人深入分析
               </h3>
               <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.8 }}>
-                我們正在開發 AI 個人化分析功能，名額有限，早鳥優先體驗。
-                <br /><span style={{ color: "#c9a84c" }}>加入候補後將第一時間收到通知。</span>
+                人生設計測驗正在開發中，包含完整衝突分析、AI 個人化建議與人生設計報告。
+                <br /><span style={{ color: "#c9a84c" }}>留下 email，上線時第一個通知你，早鳥享優惠價。</span>
               </p>
             </div>
 
@@ -515,7 +515,11 @@ export default function CareerValuesQuiz() {
             </div>
             <div style={{ textAlign: "center", display: "flex", gap: 12, justifyContent: "center" }}>
               <button className="btn-ghost" onClick={() => setPhase("quiz")}>重新比較</button>
-              <button className="btn-primary" onClick={() => setPhase("result")}>查看我的結果</button>
+              <button className="btn-primary" onClick={() => {
+                const r = computeRanking(scores);
+                localStorage.setItem("motive_career_ranked", JSON.stringify(r.map(v => v.id)));
+                setPhase("result");
+              }}>查看我的結果</button>
             </div>
           </div>
         )}
@@ -599,39 +603,49 @@ export default function CareerValuesQuiz() {
               ))}
             </div>
 
-            {/* Next step nudge */}
-            <div className="fade-up" style={{ animationDelay: "0.45s", marginBottom: 20 }}>
-              <p style={{ fontSize: 13, color: "#7a7870", lineHeight: 1.9, textAlign: "center", padding: "0 8px" }}>
-                了解自己重視什麼只是第一步，接下來可以探索你的優勢能力——<br />兩者結合才能找到真正適合你的方向。
-              </p>
-            </div>
-
-            {/* Waitlist CTA */}
-            <div className="fade-up" style={{ animationDelay: "0.5s", marginBottom: 28 }}>
+            {/* Life design upsell */}
+            <div className="fade-up" style={{ animationDelay: "0.45s", marginBottom: 28 }}>
               <div style={{
                 background: "linear-gradient(135deg,#1c1a10,#1c1a16)",
                 border: "1px solid #c9a84c44", borderRadius: 20,
-                padding: "28px 24px", textAlign: "center", position: "relative", overflow: "hidden",
+                padding: "32px 24px", textAlign: "center", position: "relative", overflow: "hidden",
               }}>
                 <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 70%)", pointerEvents: "none" }} />
-                <div style={{ fontSize: 28, marginBottom: 10 }}>✨</div>
-                <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: 18, color: "#e8c96a", marginBottom: 8 }}>
-                  想要更深入的個人分析？
+                <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "#c9a84c", textTransform: "uppercase", marginBottom: 14 }}>下一步</div>
+                <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: 22, color: "#f0ead6", marginBottom: 12, lineHeight: 1.4 }}>
+                  職涯只是人生的一部分
                 </div>
-                <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.8, maxWidth: 320, margin: "0 auto 20px" }}>
-                  目前開放早鳥候補，名額有限。<br />加入後將優先體驗 AI 個人化分析功能。
+                <p style={{ color: "#9a9080", fontSize: 13, lineHeight: 1.9, maxWidth: 340, margin: "0 auto 24px" }}>
+                  你知道自己在工作中重視什麼了。<br />
+                  但這跟你想要的人生一致嗎？<br />
+                  <span style={{ color: "#c9a84c" }}>人生設計測驗</span>幫你建立完整的全局觀——找出職涯、關係、健康、意義之間的真正優先順序。
                 </p>
-                <button
-                  onClick={() => setShowWaitlist(true)}
-                  style={{
-                    background: "linear-gradient(135deg,#c9a84c,#e8c96a)", color: "#0f0e0c",
-                    border: "none", padding: "12px 28px", borderRadius: 40,
-                    fontSize: 14, fontWeight: 700, cursor: "pointer",
-                    fontFamily: "'Noto Serif TC',serif", letterSpacing: "0.05em",
-                  }}
-                >
-                  加入候補名單
-                </button>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                  <a
+                    href="#life"
+                    style={{
+                      background: "linear-gradient(135deg,#c9a84c,#e8c96a)", color: "#0f0e0c",
+                      border: "none", padding: "14px 32px", borderRadius: 40,
+                      fontSize: 15, fontWeight: 700, cursor: "pointer",
+                      fontFamily: "'Noto Serif TC',serif", letterSpacing: "0.05em",
+                      textDecoration: "none", display: "inline-block",
+                    }}
+                  >
+                    開始人生設計測驗（免費）
+                  </a>
+                  <button
+                    onClick={() => setShowWaitlist(true)}
+                    style={{
+                      background: "transparent", color: "#9a9080",
+                      border: "1px solid #3a3730", padding: "10px 24px", borderRadius: 40,
+                      fontSize: 13, cursor: "pointer",
+                      fontFamily: "'Noto Serif TC',serif",
+                    }}
+                  >
+                    訂閱 AI 個人化分析通知 NT$99
+                  </button>
+                </div>
+                <p style={{ fontSize: 11, color: "#7a7870" }}>AI 分析功能即將推出・留下 email 優先體驗・早鳥優惠</p>
               </div>
             </div>
 
