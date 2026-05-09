@@ -94,15 +94,22 @@ function LanguageSwitcher() {
   const btnStyle = (active) => ({
     background: "none", border: "none",
     color: active ? "#c9a84c" : "#7a7870",
-    fontSize: 12, cursor: active ? "default" : "pointer",
+    fontSize: 11, cursor: active ? "default" : "pointer",
     fontFamily: "'Noto Serif TC', serif", letterSpacing: "0.08em",
-    padding: "4px 6px", transition: "color 0.2s",
+    padding: "4px 8px", transition: "color 0.2s",
   });
   return (
-    <div style={{ textAlign: "center", padding: "28px 0 36px", borderTop: "1px solid #2a2720", marginTop: 8 }}>
-      <button style={btnStyle(lang === "zh")} onClick={() => setLang("zh")} disabled={lang === "zh"}>繁中</button>
-      <span style={{ color: "#3a3730", fontSize: 11 }}>·</span>
-      <button style={btnStyle(lang === "en")} onClick={() => setLang("en")} disabled={lang === "en"}>English</button>
+    <div style={{
+      position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
+      textAlign: "center", padding: "10px 0 12px",
+      background: "linear-gradient(to top, #0f0e0c 60%, transparent)",
+      pointerEvents: "none",
+    }}>
+      <div style={{ pointerEvents: "auto", display: "inline-flex", alignItems: "center" }}>
+        <button style={btnStyle(lang === "zh")} onClick={() => setLang("zh")} disabled={lang === "zh"}>繁中</button>
+        <span style={{ color: "#2a2720", fontSize: 10 }}>·</span>
+        <button style={btnStyle(lang === "en")} onClick={() => setLang("en")} disabled={lang === "en"}>English</button>
+      </div>
     </div>
   );
 }
