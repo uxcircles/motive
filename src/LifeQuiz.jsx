@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 
 const LIFE_VALUES = [
-  { id: "impact",     emoji: "🌏", label: "社會影響", desc: "改變社會、國家與世界" },        // 12點
-  { id: "growth",     emoji: "🌱", label: "成長",   desc: "持續學習、成為更好的自己" },      // 1點
-  { id: "friendship", emoji: "🤝", label: "友誼",   desc: "深度友誼、社交連結" },            // 2點
-  { id: "family",     emoji: "🏡", label: "家人",   desc: "與父母、子女和手足的關係" },      // 3點
-  { id: "romance",    emoji: "💕", label: "親密關係", desc: "伴侶、被愛與付出" },            // 4點
-  { id: "peace",      emoji: "🌙", label: "內在平靜", desc: "與自己和解、不被焦慮主導" },    // 5點
-  { id: "meaning",    emoji: "🕯️", label: "意義",   desc: "感覺存在有價值、有貢獻" },       // 6點
-  { id: "autonomy",   emoji: "🗝️", label: "自主",   desc: "時間與生活方式由自己決定" },     // 7點
-  { id: "experience", emoji: "✈️", label: "體驗",   desc: "旅行、冒險、嘗試新事物" },       // 8點
-  { id: "health",     emoji: "💪", label: "健康",   desc: "身體狀態、精力、睡眠" },          // 9點
-  { id: "finance",    emoji: "💰", label: "財務",   desc: "安全感、不被錢綁住的自由" },      // 10點
-  { id: "career",     emoji: "💼", label: "職涯",   desc: "工作有方向、在乎自己做的事" },    // 11點
+  { id: "impact",     emoji: "🌏", label: "社會影響", desc: "讓世界因你而有所不同" },              // 12點
+  { id: "career",     emoji: "💼", label: "職涯發展", desc: "在事業上持續進步與被肯定" },          // 01點
+  { id: "finance",    emoji: "💰", label: "財務狀況", desc: "有足夠的物質基礎，不為錢煩惱" },      // 02點
+  { id: "family",     emoji: "🏡", label: "家人關係", desc: "與家人深度連結，成為彼此的依靠" },    // 03點
+  { id: "romance",    emoji: "💕", label: "親密關係", desc: "深度的伴侶關係，被愛也付出" },        // 04點
+  { id: "friendship", emoji: "🤝", label: "友誼社交", desc: "有真心的朋友，享受群體共鳴" },       // 05點
+  { id: "peace",      emoji: "🌙", label: "心靈歸屬", desc: "與自己和解，找到內心的定錨" },        // 06點
+  { id: "health",     emoji: "💪", label: "身體健康", desc: "維持身體活力，精力充沛地面對生活" },  // 07點
+  { id: "autonomy",   emoji: "🗝️", label: "自主自由", desc: "按自己的方式生活，不被外力綁架" },   // 08點
+  { id: "experience", emoji: "✈️", label: "生活體驗", desc: "用身體去感受世界，累積難忘的經歷" }, // 09點
+  { id: "growth",     emoji: "🌱", label: "個人成長", desc: "不斷拓展思維，成為更有深度的自己" }, // 10點
+  { id: "creativity", emoji: "🎨", label: "趣味創造", desc: "沉浸喜歡的事，享受創作與玩樂" },    // 11點
 ];
 
 const CAREER_LABELS = {
@@ -156,8 +156,8 @@ function ConflictAnalysis({ lifeRanked }) {
   const careerToLife = {
     money: "finance", learning: "growth", autonomy: "autonomy",
     impact: "impact", growth: "growth", people: "friendship",
-    balance: "peace", security: "finance", prestige: "meaning",
-    creativity: "experience", leadership: "impact", expertise: "growth",
+    balance: "peace", security: "finance", prestige: "career",
+    creativity: "creativity", leadership: "impact", expertise: "growth",
     challenge: "experience", culture: "friendship",
   };
 
