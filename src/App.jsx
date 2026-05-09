@@ -417,8 +417,8 @@ export default function CareerValuesQuiz() {
         .score-bar { height:100%; background:linear-gradient(90deg,#c9a84c,#e8c96a); border-radius:2px; }
         .btn-primary { background:linear-gradient(135deg,#c9a84c,#e8c96a); color:#0f0e0c; border:none; padding:14px 36px; border-radius:40px; font-size:16px; font-weight:700; cursor:pointer; font-family:'Noto Serif TC',serif; letter-spacing:0.05em; transition:opacity 0.2s,transform 0.1s; }
         .btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
-        .btn-ghost { background:transparent; color:#9a9080; border:1px solid #9a9080; padding:10px 24px; border-radius:40px; font-size:14px; cursor:pointer; font-family:'Noto Serif TC',serif; transition:border-color 0.2s,color 0.2s; }
-        .btn-ghost:hover { border-color:#f0ead6; color:#f0ead6; }
+        .btn-ghost { background:transparent; color:#9a9080; border:1px solid #9a9080; padding:10px 24px; border-radius:40px; font-size:14px; cursor:pointer; font-family:'Noto Serif TC',serif; transition:border-color 0.2s,color 0.2s,transform 0.1s; }
+        .btn-ghost:hover { border-color:#f0ead6; color:#f0ead6; transform:translateY(-1px); }
         .sat-card { background:#1c1a16; border:1px solid #2a2720; border-radius:16px; padding:22px 24px; margin-bottom:12px; }
         .insight-box { background:#141210; border:1px solid #2a2720; border-radius:14px; padding:20px 22px; margin-bottom:12px; position:relative; overflow:hidden; }
         .insight-box::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent); }
