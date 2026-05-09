@@ -411,6 +411,7 @@ export default function LifeQuiz({ onBack }) {
   };
 
   const ranked = ["satisfaction", "result"].includes(phase) ? computeRanking(scores) : [];
+  const radarData = LIFE_VALUES.map(v => ({ ...v, score: scores[v.id] || 0 }));
   const top5 = ranked.slice(0, 5);
   const progress = pairs.length > 0 ? Math.round((current / pairs.length) * 100) : 0;
 
@@ -553,7 +554,7 @@ export default function LifeQuiz({ onBack }) {
             <div className="fade-up" style={{ textAlign: "center", marginBottom: 24 }}>
               <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#c9a84c", textTransform: "uppercase", marginBottom: 20 }}>你的人生全局觀</div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <RadarChart ranked={ranked} />
+                <RadarChart ranked={radarData} />
               </div>
             </div>
 

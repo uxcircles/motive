@@ -591,7 +591,7 @@ export default function CareerValuesQuiz() {
 
             {/* Career Recommendations */}
             <div className="fade-up" style={{ animationDelay: "0.4s", marginBottom: 24 }}>
-              <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#c9a84c", marginBottom: 16, textTransform: "uppercase" }}>🗺️ 適合你的職涯方向</div>
+              <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "#c9a84c", marginBottom: 16, textTransform: "uppercase" }}>✦ 適合你的職涯方向</div>
               {careerType.careers.map((c, i) => (
                 <div key={i} className="career-card">
                   <div style={{
