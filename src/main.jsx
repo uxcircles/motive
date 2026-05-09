@@ -13,7 +13,7 @@ function Root() {
   }, []);
 
   if (hash === "#life") {
-    return <LifeQuiz onBack={() => { window.location.hash = ""; }} />;
+    return <LifeQuiz onBack={() => { localStorage.setItem("motive_career_return", "result"); window.location.hash = ""; }} />;
   }
   return <App />;
 }
