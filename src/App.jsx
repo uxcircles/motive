@@ -350,16 +350,17 @@ function SatisfactionSlider({ value, onChange, color }) {
 
 // ── Main App ──
 export default function CareerValuesQuiz() {
-  const returnPhase = localStorage.getItem("motive_career_return");
-  if (returnPhase) localStorage.removeItem("motive_career_return");
-  const [phase, setPhase] = useState(returnPhase || "intro");
+  const [phase, setPhase] = useState(() => {
+    const returnPhase = localStorage.getItem("motive_career_return");
+    if (returnPhase) localStorage.removeItem("motive_career_return");
+    return returnPhase || "intro";
+  });
   const [pairs, setPairs] = useState([]);
   const [current, setCurrent] = useState(0);
   const [scores, setScores] = useState({});
   const [cardAnim, setCardAnim] = useState({ left: "", right: "" });
   const [animating, setAnimating] = useState(false);
   const [satisfaction, setSatisfaction] = useState({});
-  const [showWaitlist, setShowWaitlist] = useState(false);
 
   useEffect(() => {
     if (phase === "quiz") {
@@ -667,7 +668,6 @@ export default function CareerValuesQuiz() {
         )}
       </div>
 
-      {showWaitlist && <WaitlistModal onClose={() => setShowWaitlist(false)} />}
     </div>
   );
 }
