@@ -353,9 +353,9 @@ export default function LifeQuiz({ onBack }) {
         {phase === "intro" && (
           <div style={{ textAlign: "center", paddingTop: 60 }}>
             <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#c9a84c", marginBottom: 20, textTransform: "uppercase" }}>Motive</div>
-            <div style={{ fontSize: 48, marginBottom: 24 }}>🧭</div>
+            <div style={{ fontSize: 48, marginBottom: 24 }}>🗺️</div>
             <h1 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(28px,5vw,44px)", lineHeight: 1.2, marginBottom: 16 }}>
-              你的人生<br />優先順序是什麼？
+              探索你的<br />人生地圖
             </h1>
             <p style={{ color: "#9a9080", fontSize: 15, lineHeight: 1.9, maxWidth: 380, margin: "0 auto 10px" }}>
               職涯只是人生的一部分。透過 12 個面向的配對比較，找出你真正的全局優先順序。
