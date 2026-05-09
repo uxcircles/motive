@@ -403,9 +403,9 @@ export default function CareerValuesQuiz() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=DM+Serif+Display&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        .card { background:#1c1a16; border:1px solid #3a3730; border-radius:20px; padding:32px 24px; cursor:pointer; transition:transform 0.15s,border-color 0.15s,box-shadow 0.15s; position:relative; overflow:hidden; width:100%; max-width:255px; min-height:210px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; user-select:none; }
-        .card:hover { border-color:#c9a84c; box-shadow:0 0 28px rgba(201,168,76,0.15); transform:translateY(-4px); }
-        .card.winner { border-color:#c9a84c; box-shadow:0 0 48px rgba(201,168,76,0.3); transform:scale(1.05); background:#221f18; animation:winPulse 0.5s ease; }
+        .card { background:#1c1a16; border:1px solid #3a3730; border-radius:20px; padding:32px 24px; cursor:pointer; transition:transform 0.15s,border-color 0.15s,box-shadow 0.15s,background 0.15s; position:relative; overflow:hidden; width:100%; max-width:255px; min-height:210px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; user-select:none; }
+        .card:hover { border-color:#c9a84c; box-shadow:0 0 28px rgba(201,168,76,0.15); transform:translateY(-4px); background:rgba(201,168,76,0.1); }
+        .card.winner { border-color:#c9a84c; box-shadow:0 0 48px rgba(201,168,76,0.3); transform:scale(1.05); background:rgba(201,168,76,0.1); animation:winPulse 0.5s ease; }
         .card.loser { opacity:0.3; transform:scale(0.94); filter:grayscale(0.7); }
         @keyframes winPulse { 0%{box-shadow:0 0 0 rgba(201,168,76,0)} 50%{box-shadow:0 0 56px rgba(201,168,76,0.5)} 100%{box-shadow:0 0 48px rgba(201,168,76,0.3)} }
         .progress-bar { height:3px; background:#2a2720; border-radius:2px; overflow:hidden; flex:1; }
