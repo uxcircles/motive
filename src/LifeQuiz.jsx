@@ -6,7 +6,7 @@ const LIFE_VALUES = [
   { id: "romance",    emoji: "💕", label: "親密關係", desc: "伴侶、被愛與付出" },
   { id: "friendship", emoji: "🤝", label: "友誼",   desc: "深度友誼、社交連結" },
   { id: "finance",    emoji: "💰", label: "財務",   desc: "安全感、不被錢綁住的自由" },
-  { id: "growth",     emoji: "📈", label: "成長",   desc: "持續學習、成為更好的自己" },
+  { id: "growth",     emoji: "🌱", label: "成長",   desc: "持續學習、成為更好的自己" },
   { id: "meaning",    emoji: "🕯️", label: "意義",   desc: "感覺存在有價值、有貢獻" },
   { id: "autonomy",   emoji: "🗝️", label: "自主",   desc: "時間與生活方式由自己決定" },
   { id: "experience", emoji: "✈️", label: "體驗",   desc: "旅行、冒險、嘗試新事物" },
