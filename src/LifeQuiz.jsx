@@ -234,10 +234,19 @@ function SatisfactionSlider({ value, onChange, color }) {
 }
 
 // ── Life Waitlist Modal ──
+const PRICE_OPTIONS = [
+  { value: "free", label: "免費才用" },
+  { value: "49", label: "NT$49" },
+  { value: "99", label: "NT$99" },
+  { value: "199+", label: "NT$199 以上" },
+  { value: "undecided", label: "看功能再決定" },
+];
+
 function LifeWaitlistModal({ onClose, top3 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [price, setPrice] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -250,7 +259,7 @@ function LifeWaitlistModal({ onClose, top3 }) {
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST", mode: "no-cors",
-        body: JSON.stringify({ name, email, message, quiz_type: "life", top3: top3.join(",") }),
+        body: JSON.stringify({ name, email, message, quiz_type: "life", top3: top3.join(","), price_willingness: price }),
       });
     } catch (_) {}
     setLoading(false); setSubmitted(true);
@@ -297,6 +306,20 @@ function LifeWaitlistModal({ onClose, top3 }) {
                   onChange={(e) => { setEmail(e.target.value); setError(""); }}
                   style={{ ...inputStyle, border: `1px solid ${error ? "#c0504d" : "#3a3730"}` }} />
                 {error && <p style={{ fontSize: 12, color: "#c0504d", marginTop: 5 }}>{error}</p>}
+              </div>
+              <div>
+                <label style={labelStyle}>如果功能上線，你願意付多少？（選填）</label>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                  {PRICE_OPTIONS.map(opt => (
+                    <button key={opt.value} onClick={() => setPrice(opt.value)} type="button" style={{
+                      padding: "7px 14px", borderRadius: 20, fontSize: 13, cursor: "pointer",
+                      fontFamily: "'Noto Serif TC', serif", transition: "all 0.15s",
+                      background: price === opt.value ? "rgba(201,168,76,0.15)" : "transparent",
+                      border: `1px solid ${price === opt.value ? "#c9a84c" : "#3a3730"}`,
+                      color: price === opt.value ? "#c9a84c" : "#9a9080",
+                    }}>{opt.label}</button>
+                  ))}
+                </div>
               </div>
               <div>
                 <label style={labelStyle}>你最想了解什麼？（選填）</label>
