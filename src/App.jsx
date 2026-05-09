@@ -436,6 +436,7 @@ export default function CareerValuesQuiz() {
         {phase === "intro" && (
           <div style={{ textAlign: "center", paddingTop: 60 }}>
             <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#c9a84c", marginBottom: 20, textTransform: "uppercase" }}>Motive</div>
+            <div style={{ fontSize: 48, marginBottom: 24 }}>🧭</div>
             <h1 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(32px,6vw,52px)", lineHeight: 1.2, marginBottom: 16 }}>
               解鎖你的<br />職涯驅動力
             </h1>
