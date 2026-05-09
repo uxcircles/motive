@@ -421,8 +421,8 @@ export default function CareerValuesQuiz() {
         .btn-ghost { background:transparent; color:#9a9080; border:1px solid #9a9080; padding:10px 24px; border-radius:40px; font-size:14px; cursor:pointer; font-family:'Noto Serif TC',serif; transition:border-color 0.2s,color 0.2s,transform 0.1s; }
         .btn-ghost:hover { border-color:#f0ead6; color:#f0ead6; transform:translateY(-1px); }
         .sat-card { background:#1c1a16; border:1px solid #2a2720; border-radius:16px; padding:22px 24px; margin-bottom:12px; }
-        .insight-box { background:#141210; border:1px solid #2a2720; border-radius:14px; padding:20px 22px; margin-bottom:12px; position:relative; overflow:hidden; }
-        .insight-box::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent); }
+        .insight-box { background:transparent; border:none; border-left:2px solid #c9a84c44; padding:4px 0 4px 20px; margin-bottom:28px; position:relative; }
+        .insight-box::before { content:''; }
         .career-card { background:#1c1a16; border:1px solid #2a2720; border-radius:14px; padding:18px 20px; margin-bottom:10px; display:flex; gap:14px; align-items:flex-start; }
         .divider { height:1px; background:linear-gradient(90deg,transparent,#2a2720,transparent); margin:28px 0; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
