@@ -20,23 +20,50 @@ const VALUES = [
   { id: "culture",    emoji: "🏢" },
 ];
 
+// primary traits = 全力加分；secondary traits = 0.4 倍加分
+// 14 個 value 全部有歸屬，避免 hardcoded fallback
 const CAREER_TYPES_META = {
-  autonomous: { emoji: "🎯", color: "#e8824a", traits: ["autonomy", "creativity", "challenge"] },
-  achiever:   { emoji: "🏆", color: "#c9a84c", traits: ["growth", "prestige", "money"] },
-  meaningful: { emoji: "🌍", color: "#5a9e6f", traits: ["impact", "culture", "people"] },
-  expert:     { emoji: "🔬", color: "#6a8fcf", traits: ["expertise", "learning", "challenge"] },
-  steady:     { emoji: "🏡", color: "#9b7ec8", traits: ["security", "balance", "money"] },
+  autonomous: {
+    emoji: "🎯", color: "#e8824a",
+    primary:   ["autonomy", "creativity"],
+    secondary: ["challenge", "learning", "impact"],
+  },
+  achiever: {
+    emoji: "🏆", color: "#c9a84c",
+    primary:   ["growth", "prestige", "money"],
+    secondary: ["leadership", "challenge"],
+  },
+  meaningful: {
+    emoji: "🌍", color: "#5a9e6f",
+    primary:   ["impact", "people", "culture"],
+    secondary: ["leadership", "learning"],
+  },
+  expert: {
+    emoji: "🔬", color: "#6a8fcf",
+    primary:   ["expertise", "learning"],
+    secondary: ["challenge", "autonomy", "creativity"],
+  },
+  steady: {
+    emoji: "🏡", color: "#9b7ec8",
+    primary:   ["security", "balance"],
+    secondary: ["money", "culture", "people"],
+  },
 };
 
-function detectTypeKey(ranked) {
-  const top3ids = ranked.slice(0, 3).map((v) => v.id);
-  let bestType = "expert";
-  let bestScore = -1;
-  for (const [key, type] of Object.entries(CAREER_TYPES_META)) {
-    const score = type.traits.filter((t) => top3ids.includes(t)).length;
-    if (score > bestScore) { bestScore = score; bestType = key; }
-  }
-  return bestType;
+// 加權評分演算法：用實際配對比較分數，而非只看前 3 名
+function detectType(ranked) {
+  const maxScore = Math.max(...ranked.map(v => v.score), 1);
+  const scoreMap = Object.fromEntries(ranked.map(v => [v.id, v.score]));
+
+  const results = Object.entries(CAREER_TYPES_META).map(([key, type]) => {
+    const score =
+      type.primary.reduce((s, id)   => s + (scoreMap[id] || 0) / maxScore,       0) +
+      type.secondary.reduce((s, id) => s + (scoreMap[id] || 0) / maxScore * 0.4, 0);
+    return { key, score };
+  });
+
+  results.sort((a, b) => b.score - a.score);
+  return { primary: results[0].key, secondary: results[1].key };
 }
 
 function generatePairs(values) {
@@ -352,9 +379,12 @@ export default function CareerValuesQuiz() {
 
   const ranked = ["satisfaction", "result"].includes(phase) ? computeRanking(displayValues, scores) : [];
   const top5 = ranked.slice(0, 5);
-  const careerTypeKey = phase === "result" ? detectTypeKey(ranked) : null;
-  const careerType = careerTypeKey
-    ? { ...CAREER_TYPES_META[careerTypeKey], ...t.careerTypes[careerTypeKey] }
+  const detected = phase === "result" ? detectType(ranked) : null;
+  const careerType = detected
+    ? { ...CAREER_TYPES_META[detected.primary],   ...t.careerTypes[detected.primary] }
+    : null;
+  const careerTypeSecondary = detected
+    ? { ...CAREER_TYPES_META[detected.secondary], ...t.careerTypes[detected.secondary] }
     : null;
   const progress = pairs.length > 0 ? Math.round((current / pairs.length) * 100) : 0;
 
@@ -491,7 +521,7 @@ export default function CareerValuesQuiz() {
 
             {/* Type */}
             <div className="fade-up" style={{
-              borderRadius: 20, padding: "28px 24px", marginBottom: 24,
+              borderRadius: 20, padding: "28px 24px", marginBottom: 8,
               background: "linear-gradient(135deg," + careerType.color + "22,#1c1a16)",
               border: "1px solid " + careerType.color + "55",
             }}>
@@ -501,6 +531,17 @@ export default function CareerValuesQuiz() {
                 <h2 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(24px,4vw,36px)", color: "#f0ead6" }}>{careerType.label}</h2>
               </div>
             </div>
+
+            {/* Secondary type */}
+            {careerTypeSecondary && (
+              <div className="fade-up" style={{ marginBottom: 24, paddingLeft: 4 }}>
+                <span style={{ fontSize: 12, color: "#7a7870" }}>{ui.result.secondaryPrefix} </span>
+                <span style={{ fontSize: 12, color: careerTypeSecondary.color }}>
+                  {careerTypeSecondary.emoji} {careerTypeSecondary.label}
+                </span>
+                <span style={{ fontSize: 12, color: "#7a7870" }}> {ui.result.secondarySuffix}</span>
+              </div>
+            )}
 
             {/* Insight */}
             <div className="insight-box fade-up" style={{ animationDelay: "0.1s" }}>
