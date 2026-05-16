@@ -119,7 +119,7 @@ function WaitlistModal({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbySZQS4qFXzj7zBLENpvjDy2dZWOZEJTGkxHsOjKSMGWKqdzspTyloC1pu9QivriFJXbg/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyHKScH9B4QE8BsDgsIoL6fSgZeuKCKqiJ-Sd-te0LxS2uLMMEHDeSUnkKdV4u8BoLIFw/exec";
 
   const handleSubmit = async () => {
     if (!email || !email.includes("@")) { setError(t.emailError); return; }
